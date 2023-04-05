@@ -1,3 +1,7 @@
 luminous/.idea
 luminous/.mvn
 luminous/target
+
+enlightened/node_modules
+enlightened//dist
+enlightened/.vscode
