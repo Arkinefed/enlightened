@@ -3,6 +3,7 @@ package com.arkinefed.luminous.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class SamplePack {
@@ -15,6 +16,8 @@ public class SamplePack {
     private Genre genre;
     private String description;
     private LocalDateTime releaseDate;
+    @ManyToMany(mappedBy = "samplePacks")
+    private List<Order> orders;
 
     public SamplePack() {
     }
@@ -77,5 +80,13 @@ public class SamplePack {
 
     public void setReleaseDate(LocalDateTime releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

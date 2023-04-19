@@ -3,6 +3,7 @@ package com.arkinefed.luminous.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -22,6 +23,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
     private LocalDateTime registerDate;
+    @OneToMany(mappedBy = "user")
+    private List<Order> order;
 
     public User() {
     }
@@ -94,5 +97,13 @@ public class User {
 
     public void setRegisterDate(LocalDateTime registerDate) {
         this.registerDate = registerDate;
+    }
+
+    public List<Order> getOrder() {
+        return order;
+    }
+
+    public void setOrder(List<Order> order) {
+        this.order = order;
     }
 }
