@@ -1,5 +1,6 @@
 package com.arkinefed.luminous.model;
 
+import com.arkinefed.luminous.utility.Authorization;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -36,7 +37,7 @@ public class User {
                 Role role,
                 LocalDateTime registerDate) {
         this.username = username;
-        this.password = password;
+        this.password = Authorization.encodePassword(password);
         this.firstName = firstName;
         this.lastName = lastName;
         this.role = role;
