@@ -9,9 +9,13 @@ public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
+    @Column(unique = true)
     private String name;
     @OneToMany(mappedBy = "genre")
     private List<SamplePack> samplePacks;
+
+    @Version
+    int lock;
 
     public Genre() {
     }

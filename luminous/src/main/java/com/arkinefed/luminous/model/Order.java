@@ -16,6 +16,9 @@ public class Order {
     @ManyToMany
     private List<SamplePack> samplePacks;
 
+    @Version
+    int lock;
+
     public Order() {
     }
 

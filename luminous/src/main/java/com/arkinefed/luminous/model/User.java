@@ -17,6 +17,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
+    @Column(unique = true)
     private String username;
     private String password;
     private String firstName;
@@ -25,7 +26,10 @@ public class User {
     private Role role;
     private LocalDateTime registerDate;
     @OneToMany(mappedBy = "user")
-    private List<Order> order;
+    private List<Order> orders;
+
+    @Version
+    int lock;
 
     public User() {
     }
@@ -100,11 +104,11 @@ public class User {
         this.registerDate = registerDate;
     }
 
-    public List<Order> getOrder() {
-        return order;
+    public List<Order> getOrders() {
+        return orders;
     }
 
-    public void setOrder(List<Order> order) {
-        this.order = order;
+    public void setOrders(List<Order> order) {
+        this.orders = order;
     }
 }

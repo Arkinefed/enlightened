@@ -10,6 +10,7 @@ public class SamplePack {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
+    @Column(unique = true)
     private String name;
     private double price;
     @ManyToOne
@@ -18,6 +19,9 @@ public class SamplePack {
     private LocalDateTime releaseDate;
     @ManyToMany(mappedBy = "samplePacks")
     private List<Order> orders;
+
+    @Version
+    int lock;
 
     public SamplePack() {
     }
