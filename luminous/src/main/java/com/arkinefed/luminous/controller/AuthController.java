@@ -43,7 +43,7 @@ public class AuthController {
             ZoneId zone = ZoneId.systemDefault();
 
             String payload = "{" +
-                    "\"name\" : \"" + user.getUsername() + "\"," +
+                    "\"username\" : \"" + user.getUsername() + "\"," +
                     "\"role\" : \"" + user.getRole() + "\"," +
                     "\"exp\" : \"" + date.plusMinutes(5).atZone(zone).toEpochSecond() + "\"" +
                     "}";
