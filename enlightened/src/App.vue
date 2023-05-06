@@ -15,8 +15,8 @@
 		<template v-else>
 			<router-link to="/login">login</router-link>
 		</template>
-
 	</nav>
+
 	<router-view />
 </template>
 
@@ -55,6 +55,13 @@ export default {
 
 <style>
 #app {
-	text-align: center;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+button {
+	padding: 13px;
+	border: 1px solid black;
+	background-color: black;
+	color: white;
 }
 </style>

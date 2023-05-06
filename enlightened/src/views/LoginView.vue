@@ -1,11 +1,13 @@
 <template>
+	<template class="switch">
+		<button @click="changeToRegister()">zarejestruj</button>
+		<button @click="changeToLogin()">zaloguj</button>
+	</template>
+
 	<div class="login">
 		<LoginForm v-if="login" />
 		<RegisterForm v-else />
 	</div>
-
-	<button @click="changeToRegister()">zarejestruj</button>
-	<button @click="changeToLogin()">zaloguj</button>
 </template>
 
 <script>
@@ -34,4 +36,31 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+form {
+	display: flex;
+	flex-direction: column;
+	row-gap: 7px;
+	width: 50%;
+	margin: auto;
+	border: 1px solid black;
+	padding: 17px;
+}
+
+form * {
+	padding: 7px;
+}
+
+form label {
+	font-size: 17px;
+}
+
+.switch {
+	display: flex;
+	justify-content: center;
+	column-gap: 17px;
+	width: 50%;
+	margin: auto;
+	padding: 7px;
+}
+</style>
