@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { user } from '@/reactive/user'
 import axios from 'axios'
 
 export default {
@@ -35,8 +36,8 @@ export default {
 					.then(response => {
 						this.message = 'logged in'
 
-						localStorage.setItem('logged', true)
-						localStorage.setItem('token', response.data.token)
+						localStorage.logged = user.logged = true
+						localStorage.token = user.token = response.data.token
 
 						this.extractDataFromToken()
 					})
@@ -47,12 +48,13 @@ export default {
 		},
 		extractDataFromToken() {
 			const parts = localStorage.getItem('token').split('.')
-
 			const payload = JSON.parse(window.atob(parts[1]))
 
-			localStorage.setItem('name', payload.name)
-			localStorage.setItem('role', payload.role)
-			localStorage.setItem('exp', payload.exp)
+			localStorage.username = user.username = payload.username
+			localStorage.role = user.role = payload.role
+			localStorage.exp = user.exp = payload.exp
+
+			this.$router.push('/')
 		}
 	}
 }
