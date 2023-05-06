@@ -1,3 +1,5 @@
 {
-    "hello": "Witaj w aplikacji Vue.js"
+    "HomeInformations": {
+        "hello": "Witaj w sklepie Enlightened"
+    }
 }

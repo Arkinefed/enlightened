@@ -1,15 +1,12 @@
 <template>
 	<div class="hello">
-		<h1>{{ $t('hello') }} </h1>
+		<h1>{{ $t('HomeInformations.hello') }} </h1>
 	</div>
 </template>
 
 <script>
 export default {
-	name: 'HelloWorld',
-	props: {
-		msg: String
-	}
+	name: 'HomeInformations'
 }
 </script>
 

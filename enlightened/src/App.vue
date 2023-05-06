@@ -6,7 +6,15 @@
 	</div>
 	<nav>
 		<router-link to="/">Home</router-link> |
-		<router-link to="/about">About</router-link>
+		<router-link to="/about">About</router-link> |
+
+		<template v-if="logged">
+			<h2>{{ username }}</h2>
+		</template>
+		<template v-else>
+			<router-link to="/login">Login</router-link> |
+			<router-link to="/register">Register</router-link>
+		</template>
 	</nav>
 	<router-view />
 </template>
@@ -15,6 +23,8 @@
 export default {
 	data() {
 		return {
+			logged: false,
+			username: '',
 			languages: [
 				{ flag: 'us', language: 'en', title: 'English' },
 				{ flag: 'pl', language: 'pl', title: 'Polski' }

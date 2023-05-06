@@ -1,17 +1,19 @@
 <template>
 	<div class="home">
 		<img alt="Vue logo" src="../assets/logo.png">
-		<HelloWorld />
+		<HomeInformations />
 	</div>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue'
+import HomeInformations from '@/components/HomeInformations.vue'
 
 export default {
 	name: 'HomeView',
 	components: {
-		HelloWorld
+		HomeInformations
 	}
 }
 </script>
+
+<style></style>
