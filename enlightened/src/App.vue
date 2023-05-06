@@ -8,13 +8,8 @@
 		<router-link to="/">Home</router-link> |
 		<router-link to="/about">About</router-link> |
 
-		<template v-if="logged">
-			<h2>{{ username }}</h2>
-		</template>
-		<template v-else>
-			<router-link to="/login">Login</router-link> |
-			<router-link to="/register">Register</router-link>
-		</template>
+		<router-link v-if="logged" to="/">{{ username }}</router-link>
+		<router-link v-else to="/login">Login</router-link>
 	</nav>
 	<router-view />
 </template>
@@ -42,30 +37,6 @@ export default {
 
 <style>
 #app {
-	font-family: Avenir, Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
-	color: #2c3e50;
-}
-
-nav {
-	padding: 30px;
-}
-
-nav a {
-	font-weight: bold;
-	color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-	color: #42b983;
-}
-
-button {
-	padding: 15px;
-	border: 1px solid green;
-	font-size: 18px;
-	margin: 15px;
 }
 </style>
