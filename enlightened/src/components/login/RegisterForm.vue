@@ -49,7 +49,11 @@ export default {
 						this.message = response.data.message
 					})
 					.catch(error => {
-						this.message = error.response.data.message
+						if (error.response) {
+							this.message = error.response.data.message
+						} else {
+							this.message = 'connection error'
+						}
 					})
 			}
 		}

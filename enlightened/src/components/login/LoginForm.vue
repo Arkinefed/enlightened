@@ -42,7 +42,11 @@ export default {
 						this.extractDataFromToken()
 					})
 					.catch(error => {
-						this.message = error.response.data.logged ? 'logged in' : 'couldn\'t log in'
+						if (error.response) {
+							this.message = error.response.data.logged ? 'logged in' : 'couldn\'t log in'
+						} else {
+							this.message = 'connection error'
+						}
 					})
 			}
 		},

@@ -1,7 +1,7 @@
 <template>
 	<template class="switch">
-		<button @click="changeToRegister()">zarejestruj</button>
-		<button @click="changeToLogin()">zaloguj</button>
+		<button v-bind:class="{ 'active-button': !login }" @click="changeToRegister()">zarejestruj</button>
+		<button v-bind:class="{ 'active-button': login }" @click="changeToLogin()">zaloguj</button>
 	</template>
 
 	<div class="login">
@@ -53,6 +53,11 @@ form * {
 
 form label {
 	font-size: 17px;
+}
+
+form button {
+	font-size: 13px;
+	padding: 13px;
 }
 
 .switch {

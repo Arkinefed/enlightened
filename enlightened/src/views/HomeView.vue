@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import HomeInformations from '@/components/HomeInformations.vue'
+import HomeInformations from '@/components/home/HomeInformations.vue'
 
 export default {
 	name: 'HomeView',

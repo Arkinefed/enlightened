@@ -54,6 +54,11 @@ export default {
 </script>
 
 <style>
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
 #app {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -63,5 +68,11 @@ button {
 	border: 1px solid black;
 	background-color: black;
 	color: white;
+	font-size: 13px;
+}
+
+.active-button {
+	background-color: white;
+	color: black;
 }
 </style>
