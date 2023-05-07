@@ -9,7 +9,7 @@
 		<router-link to="/about">About</router-link>
 
 		<template v-if="user.logged">
-			<router-link to="/">{{ user.username }}</router-link>
+			<router-link to="/profile">{{ user.username }}</router-link>
 			<button @click="logout()">wyloguj</button>
 		</template>
 		<template v-else>
@@ -50,7 +50,6 @@ export default {
 		}
 	}
 }
-
 </script>
 
 <style>
