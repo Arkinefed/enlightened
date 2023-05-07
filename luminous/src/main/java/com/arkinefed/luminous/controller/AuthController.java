@@ -1,9 +1,9 @@
 package com.arkinefed.luminous.controller;
 
-import com.arkinefed.luminous.data.LoginRequest;
-import com.arkinefed.luminous.data.LoginResponse;
-import com.arkinefed.luminous.data.RegisterRequest;
-import com.arkinefed.luminous.data.RegisterResponse;
+import com.arkinefed.luminous.data.account.LoginRequest;
+import com.arkinefed.luminous.data.account.LoginResponse;
+import com.arkinefed.luminous.data.account.RegisterRequest;
+import com.arkinefed.luminous.data.account.RegisterResponse;
 import com.arkinefed.luminous.model.User;
 import com.arkinefed.luminous.service.UserService;
 import com.arkinefed.luminous.utility.Authorization;

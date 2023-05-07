@@ -1,4 +1,4 @@
-package com.arkinefed.luminous.data;
+package com.arkinefed.luminous.data.account;
 
 public class LoginResponse {
     private boolean logged;

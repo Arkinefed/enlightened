@@ -1,4 +1,4 @@
-package com.arkinefed.luminous.data;
+package com.arkinefed.luminous.data.account;
 
 public class LoginRequest {
     private String username;
