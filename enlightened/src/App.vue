@@ -5,8 +5,8 @@
 		</button>
 	</div>
 	<nav>
-		<router-link to="/">Home</router-link> |
-		<router-link to="/about">About</router-link> |
+		<router-link to="/">Home</router-link>
+		<router-link to="/about">About</router-link>
 
 		<template v-if="user.logged">
 			<router-link to="/">{{ user.username }}</router-link>
@@ -72,6 +72,30 @@ button {
 }
 
 .active-button {
+	background-color: white;
+	color: black;
+}
+
+nav {
+	font-size: 21px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	background-color: black;
+	position: relative;
+}
+
+a {
+	padding: 17px;
+	text-decoration: none;
+	background-color: black;
+	color: white;
+	width: 175px;
+	text-align: center;
+}
+
+.router-link-active,
+.router-link-exact-active {
 	background-color: white;
 	color: black;
 }
