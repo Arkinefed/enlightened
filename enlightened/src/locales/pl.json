@@ -1,7 +1,9 @@
 {
+    "home": "dom",
+    "about": "o",
     "hello": "Witaj w sklepie Enlightened",
     "mainInfo": "Fajny sklep",
-    "login": "zaluguj",
+    "login": "zaloguj",
     "register": "zarejestruj",
     "username": "nazwa użytkownika",
     "password": "hasło",

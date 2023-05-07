@@ -1,7 +1,10 @@
 {
+    "home": "home",
+    "about": "about",
     "hello": "Welcome to Enlightened store",
     "mainInfo": "Nice store",
     "login": "login",
+    "logout": "logout",
     "register": "register",
     "username": "username",
     "password": "password",

@@ -1,19 +1,19 @@
 <template>
-	<div>
-		<button v-for="entry in languages" :key="entry.title" @click="changeLocale(entry.language)">
-			<flag :iso="entry.flag" v-bind:squared=false /> {{ entry.title }}
-		</button>
-	</div>
 	<nav>
-		<router-link to="/">Home</router-link>
-		<router-link to="/about">About</router-link>
+		<router-link to="/">{{ $t('home') }}</router-link>
+		<router-link to="/about">{{ $t('about') }}</router-link>
+
+		<a v-bind:class="{ 'active-language': entry.language === this.$i18n.locale }" v-for="entry in languages"
+			:key="entry.title" @click="changeLocale(entry.language)">
+			<flag :iso="entry.flag" v-bind:squared=false /> {{ entry.title }}
+		</a>
 
 		<template v-if="user.logged">
 			<router-link to="/profile">{{ user.username }}</router-link>
-			<button @click="logout()">wyloguj</button>
+			<button @click="logout()">{{ $t('logout') }}</button>
 		</template>
 		<template v-else>
-			<router-link to="/login">login</router-link>
+			<router-link to="/login">{{ $t('login') }}</router-link>
 		</template>
 	</nav>
 
@@ -70,7 +70,8 @@ button {
 	font-size: 13px;
 }
 
-.active-button {
+.active-button,
+.active-language {
 	background-color: white;
 	color: black;
 }
