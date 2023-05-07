@@ -1,6 +1,6 @@
 <template>
 	<div class="about">
-		<h1>{{ $t('AboutView.mainInfo') }}</h1>
+		<h1>{{ $t('mainInfo') }}</h1>
 	</div>
 </template>
 

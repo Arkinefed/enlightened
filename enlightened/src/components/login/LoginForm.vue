@@ -1,12 +1,12 @@
 <template>
 	<form @submit.prevent="login">
-		<label for="username">username</label>
+		<label for="username">{{ $t('username') }}</label>
 		<input type="text" id="username" v-model="formData.username">
 
-		<label for="password">password</label>
+		<label for="password">{{ $t('password') }}</label>
 		<input type="password" id="password" v-model="formData.password">
 
-		<button>zaloguj</button>
+		<button>{{ $t('login') }}</button>
 	</form>
 
 	<p class="message">{{ message }}</p>

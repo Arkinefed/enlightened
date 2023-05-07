@@ -1,5 +1,10 @@
 {
-    "HomeInformations": {
-        "hello": "Witaj w sklepie Enlightened"
-    }
+    "hello": "Witaj w sklepie Enlightened",
+    "mainInfo": "Fajny sklep",
+    "login": "zaluguj",
+    "register": "zarejestruj",
+    "username": "nazwa użytkownika",
+    "password": "hasło",
+    "firstName": "imię",
+    "lastName": "nazwisko"
 }

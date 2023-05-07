@@ -1,8 +1,10 @@
 {
-    "HomeInformations": {
-        "hello": "Welcome to Enlightened store"
-    },
-    "AboutView": {
-        "mainInfo": "Nice store"
-    }
+    "hello": "Welcome to Enlightened store",
+    "mainInfo": "Nice store",
+    "login": "login",
+    "register": "register",
+    "username": "username",
+    "password": "password",
+    "firstName": "first name",
+    "lastName": "last name"
 }

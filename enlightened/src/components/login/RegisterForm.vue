@@ -1,18 +1,18 @@
 <template>
 	<form @submit.prevent="register">
-		<label for="username">username</label>
+		<label for="username">{{ $t('username') }}</label>
 		<input type="text" id="login" v-model="formData.username">
 
-		<label for="password">password</label>
+		<label for="password">{{ $t('password') }}</label>
 		<input type="password" id="password" v-model="formData.password">
 
-		<label for="firstName">first name</label>
+		<label for="firstName">{{ $t('firstName') }}</label>
 		<input type="text" id="firstName" v-model="formData.firstName">
 
-		<label for="lastName">last name</label>
+		<label for="lastName">{{ $t('lastName') }}</label>
 		<input type="text" id="lastName" v-model="formData.lastName">
 
-		<button>zarejestruj</button>
+		<button>{{ $t('register') }}</button>
 	</form>
 
 	<p class="message">{{ message }}</p>

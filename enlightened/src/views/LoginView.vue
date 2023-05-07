@@ -1,7 +1,11 @@
 <template>
 	<template class="switch">
-		<button v-bind:class="{ 'active-button': !login }" @click="changeToRegister()">zarejestruj</button>
-		<button v-bind:class="{ 'active-button': login }" @click="changeToLogin()">zaloguj</button>
+		<button v-bind:class="{ 'active-button': !login }" @click="changeToRegister()">
+			{{ $t('register') }}
+		</button>
+		<button v-bind:class="{ 'active-button': login }" @click="changeToLogin()">
+			{{ $t('login') }}
+		</button>
 	</template>
 
 	<div class="login">
