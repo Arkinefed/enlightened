@@ -9,11 +9,11 @@
 		</a>
 
 		<template v-if="user.logged">
-			<router-link to="/profile">{{ user.username }}</router-link>
-			<button @click="logout()">{{ $t('logout') }}</button>
+			<router-link to="/profile" class="account-link">{{ user.username }}</router-link>
+			<router-link to="/logout">{{ $t('logout') }}</router-link>
 		</template>
 		<template v-else>
-			<router-link to="/login">{{ $t('login') }}</router-link>
+			<router-link to="/login" class="account-link">{{ $t('login') }}</router-link>
 		</template>
 	</nav>
 
@@ -36,17 +36,6 @@ export default {
 	methods: {
 		changeLocale(locale) {
 			this.$i18n.locale = locale
-		},
-		logout() {
-			localStorage.clear()
-
-			user.logged = false
-			user.token = ''
-			user.username = ''
-			user.role = ''
-			user.exp = ''
-
-			this.$router.push('/')
 		}
 	}
 }
@@ -92,6 +81,15 @@ a {
 	color: white;
 	width: 175px;
 	text-align: center;
+}
+
+a:hover {
+	background-color: white;
+	color: black;
+}
+
+.account-link {
+	margin-left: auto;
 }
 
 .router-link-active,
