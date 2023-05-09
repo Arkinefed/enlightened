@@ -6,15 +6,16 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     private LocalDateTime date;
     @ManyToOne
-    private User user;
+    private User buyer;
     @ManyToMany
-    private List<SamplePack> samplePacks;
+    private List<SamplePack> boughtSamplePacks;
 
     @Version
     int lock;
@@ -22,10 +23,10 @@ public class Order {
     public Order() {
     }
 
-    public Order(LocalDateTime date, User user, List<SamplePack> samplePacks) {
+    public Order(LocalDateTime date, User buyer, List<SamplePack> boughtSamplePacks) {
         this.date = date;
-        this.user = user;
-        this.samplePacks = samplePacks;
+        this.buyer = buyer;
+        this.boughtSamplePacks = boughtSamplePacks;
     }
 
     public long getId() {
@@ -44,19 +45,19 @@ public class Order {
         this.date = date;
     }
 
-    public User getUser() {
-        return user;
+    public User getBuyer() {
+        return buyer;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setBuyer(User user) {
+        this.buyer = user;
     }
 
-    public List<SamplePack> getSamplePacks() {
-        return samplePacks;
+    public List<SamplePack> getBoughtSamplePacks() {
+        return boughtSamplePacks;
     }
 
-    public void setSamplePacks(List<SamplePack> samplePacks) {
-        this.samplePacks = samplePacks;
+    public void setBoughtSamplePacks(List<SamplePack> samplePacks) {
+        this.boughtSamplePacks = samplePacks;
     }
 }

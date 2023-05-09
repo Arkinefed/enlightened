@@ -17,7 +17,7 @@ public class SamplePack {
     private Genre genre;
     private String description;
     private LocalDateTime releaseDate;
-    @ManyToMany(mappedBy = "samplePacks")
+    @ManyToMany(mappedBy = "boughtSamplePacks")
     private List<Order> orders;
 
     @Version

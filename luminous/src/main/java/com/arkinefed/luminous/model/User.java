@@ -25,7 +25,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
     private LocalDateTime registerDate;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "buyer")
     private List<Order> orders;
 
     @Version

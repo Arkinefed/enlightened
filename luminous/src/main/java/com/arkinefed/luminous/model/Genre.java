@@ -12,7 +12,7 @@ public class Genre {
     @Column(unique = true)
     private String name;
     @OneToMany(mappedBy = "genre")
-    private List<SamplePack> samplePacks;
+    private List<SamplePack> samplePacksOfGenre;
 
     @Version
     int lock;
@@ -40,11 +40,11 @@ public class Genre {
         this.name = name;
     }
 
-    public List<SamplePack> getSamplePacks() {
-        return samplePacks;
+    public List<SamplePack> getSamplePacksOfGenre() {
+        return samplePacksOfGenre;
     }
 
-    public void setSamplePacks(List<SamplePack> samplePacks) {
-        this.samplePacks = samplePacks;
+    public void setSamplePacksOfGenre(List<SamplePack> samplePacks) {
+        this.samplePacksOfGenre = samplePacks;
     }
 }
