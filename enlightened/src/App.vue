@@ -75,7 +75,7 @@ nav {
 	position: relative;
 }
 
-a {
+nav a {
 	padding: 17px;
 	text-decoration: none;
 	background-color: black;
@@ -84,7 +84,7 @@ a {
 	text-align: center;
 }
 
-a:hover {
+nav a:hover {
 	background-color: white;
 	color: black;
 }

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import HomeView from '../views/HomeView.vue'
 import SamplePacksView from '../views/SamplePacksView.vue'
+import SamplePackView from '../views/SamplePackView.vue'
 import AboutView from '../views/AboutView.vue'
 import LoginView from '../views/LoginView.vue'
 import LogoutView from '../views/LogoutView.vue'
@@ -17,6 +18,11 @@ const routes = [
 		path: '/sample-packs',
 		name: 'sample-packs',
 		component: SamplePacksView
+	},
+	{
+		path: '/sample-pack/:id',
+		name: 'sample-pack',
+		component: SamplePackView
 	},
 	{
 		path: '/about',
