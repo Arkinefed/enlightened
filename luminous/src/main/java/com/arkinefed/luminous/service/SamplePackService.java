@@ -1,8 +1,11 @@
 package com.arkinefed.luminous.service;
 
+import com.arkinefed.luminous.data.SamplePackInformation;
 import com.arkinefed.luminous.model.SamplePack;
 import com.arkinefed.luminous.repository.SamplePackRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SamplePackService {
@@ -14,5 +17,9 @@ public class SamplePackService {
 
     public void saveSamplePack(SamplePack samplePack) {
         samplePackRepository.save(samplePack);
+    }
+
+    public List<SamplePackInformation> getAllSamplePacks() {
+        return samplePackRepository.getAllSamplePacks();
     }
 }
