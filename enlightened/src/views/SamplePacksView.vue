@@ -1,5 +1,7 @@
 <template>
 	<div class="sample-packs">
+		<h1>sample packs</h1>
+
 		<template v-if="dataReceived">
 			<sample-pack-informations v-for="pack in samplePacks" v-bind:key="pack.id" :id="pack.id" :name="pack.name"
 				:price="pack.price" :genreName="pack.genreName" :description="pack.description"

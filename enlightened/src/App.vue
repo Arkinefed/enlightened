@@ -10,11 +10,12 @@
 		</a>
 
 		<template v-if="user.logged">
-			<router-link to="/profile" class="account-link">{{ user.username }}</router-link>
+			<router-link to="/cart" class="first-left-link">cart</router-link>
+			<router-link to="/profile">{{ user.username }}</router-link>
 			<router-link to="/logout">{{ $t('logout') }}</router-link>
 		</template>
 		<template v-else>
-			<router-link to="/login" class="account-link">{{ $t('login') }}</router-link>
+			<router-link to="/login" class="first-left-link">{{ $t('login') }}</router-link>
 		</template>
 	</nav>
 
@@ -56,6 +57,14 @@ export default {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+h1,
+h2,
+p.message {
+	text-align: center;
+	margin: 21px;
+	font-size: 37px;
+}
+
 button {
 	padding: 13px;
 	border: 1px solid black;
@@ -93,7 +102,7 @@ nav a:hover {
 	color: black;
 }
 
-.account-link {
+.first-left-link {
 	margin-left: auto;
 }
 
