@@ -12,4 +12,9 @@ import java.util.List;
 public interface SamplePackRepository extends JpaRepository<SamplePack, Long> {
     @Query("select new com.arkinefed.luminous.data.SamplePackInformation(sp.id, sp.name, sp.price, sp.genre.name, sp.description, sp.releaseDate) from SamplePack sp")
     List<SamplePackInformation> getAllSamplePacks();
+
+    @Query("select new com.arkinefed.luminous.data.SamplePackInformation(sp.id, sp.name, sp.price, sp.genre.name, sp.description, sp.releaseDate) from SamplePack sp where sp.id = :id")
+    SamplePackInformation getSamplePack(long id);
+
+    boolean existsById(long id);
 }

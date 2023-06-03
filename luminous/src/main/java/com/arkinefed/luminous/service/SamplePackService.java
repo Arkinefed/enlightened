@@ -22,4 +22,12 @@ public class SamplePackService {
     public List<SamplePackInformation> getAllSamplePacks() {
         return samplePackRepository.getAllSamplePacks();
     }
+
+    public SamplePackInformation getSamplePack(long id) {
+        return samplePackRepository.getSamplePack(id);
+    }
+
+    public boolean existsById(long id) {
+        return samplePackRepository.existsById(id);
+    }
 }
