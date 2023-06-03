@@ -5,5 +5,7 @@ export const user = reactive({
 	token: localStorage.token || '',
 	username: localStorage.username || '',
 	role: localStorage.role || '',
-	exp: localStorage.exp || ''
+	exp: localStorage.exp || '',
+
+	locale: localStorage.locale || 'en'
 })

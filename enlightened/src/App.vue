@@ -34,9 +34,13 @@ export default {
 			user: user
 		}
 	},
+	mounted() {
+		this.$i18n.locale = user.locale
+	},
 	methods: {
 		changeLocale(locale) {
 			this.$i18n.locale = locale
+			localStorage.locale = user.locale = locale
 		}
 	}
 }
