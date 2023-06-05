@@ -22,15 +22,11 @@ public class SamplePackController {
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<?> getSamplePack(@PathVariable Long id) {
-        if (id == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<?> getSamplePack(@PathVariable long id) {
+        if (samplePackService.existsById(id)) {
+            return ResponseEntity.ok(samplePackService.getSamplePack(id));
         } else {
-            if (samplePackService.existsById(id)) {
-                return ResponseEntity.ok(samplePackService.getSamplePack(id));
-            } else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 }
