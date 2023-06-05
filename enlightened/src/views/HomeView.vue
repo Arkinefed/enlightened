@@ -16,4 +16,18 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.home {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 90vh;
+	justify-content: center;
+	align-items: center;
+}
+
+img {
+	height: 50vh;
+	margin: 47px;
+}
+</style>

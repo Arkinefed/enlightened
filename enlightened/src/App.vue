@@ -62,7 +62,7 @@ h2,
 p.message {
 	text-align: center;
 	margin: 21px;
-	font-size: 37px;
+	font-size: 47px;
 }
 
 button {
