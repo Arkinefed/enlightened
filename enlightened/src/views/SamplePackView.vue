@@ -7,7 +7,7 @@
 				<div class="img-container">
 
 				</div>
-				<div class="info-contaier">
+				<div class="info-container">
 					<div class="info-part">
 						{{ samplePack.description }}
 					</div>
@@ -81,7 +81,7 @@ export default {
 	width: 25%;
 }
 
-.info-contaier {
+.info-container {
 	background-color: black;
 	color: white;
 	width: 75%;
