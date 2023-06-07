@@ -10,7 +10,7 @@
 		</a>
 
 		<template v-if="user.logged">
-			<router-link to="/cart" class="first-left-link">cart</router-link>
+			<router-link to="/cart" class="first-left-link">cart [{{ cart.items.length }}]</router-link>
 			<router-link to="/profile">{{ user.username }}</router-link>
 			<router-link to="/logout">{{ $t('logout') }}</router-link>
 		</template>
@@ -25,6 +25,7 @@
 <script>
 import { user } from '@/reactive/user.js'
 import { lang } from '@/reactive/lang.js'
+import { cart } from '@/reactive/cart.js'
 
 export default {
 	data() {
@@ -33,7 +34,8 @@ export default {
 				{ flag: 'us', language: 'en', title: 'English' },
 				{ flag: 'pl', language: 'pl', title: 'Polski' }
 			],
-			user: user
+			user: user,
+			cart: cart
 		}
 	},
 	mounted() {

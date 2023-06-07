@@ -20,7 +20,7 @@
 					<div class="info-part">
 						{{ samplePack.price }} zł
 					</div>
-					<div class="info-part cent" @click.prevent="addToCart(samplePack.id)">
+					<div class="info-part cent" @click.prevent="addToCart()">
 						add to cart
 					</div>
 				</div>
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import { cart } from '@/reactive/cart'
 import axios from 'axios'
 
 export default {
@@ -55,8 +56,9 @@ export default {
 					this.message = error.message
 				})
 		},
-		addToCart(id) {
-
+		addToCart() {
+			cart.items.push(this.samplePack.id)
+			localStorage.cart = JSON.stringify(cart.items)
 		}
 	}
 }

@@ -1,12 +1,18 @@
 <template>
-    <div class="cart">
-
-    </div>
+	<div class="cart">
+		{{ JSON.stringify(cart.items) }}
+	</div>
 </template>
 
 <script>
-export default {
+import { cart } from '@/reactive/cart'
 
+export default {
+	data() {
+		return {
+			cart: cart
+		}
+	}
 }
 </script>
 
