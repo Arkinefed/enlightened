@@ -20,7 +20,7 @@
 					<div class="info-part">
 						{{ samplePack.price }} zł
 					</div>
-					<div class="info-part cent" @click.prevent="addToCart()">
+					<div class="info-part cent pointer hover" @click.prevent="addToCart()">
 						add to cart
 					</div>
 				</div>
@@ -99,5 +99,21 @@ export default {
 
 .cent {
 	text-align: center;
+}
+
+.pointer {
+	cursor: pointer;
+	user-select: none;
+}
+
+.hover {
+	border: 1px solid white;
+}
+
+.hover:hover {
+	color: white;
+	background-color: black;
+	border: 1px solid white;
+	box-sizing: border-box;
 }
 </style>
