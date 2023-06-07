@@ -24,6 +24,7 @@
 
 <script>
 import { user } from '@/reactive/user.js'
+import { lang } from '@/reactive/lang.js'
 
 export default {
 	data() {
@@ -36,12 +37,12 @@ export default {
 		}
 	},
 	mounted() {
-		this.$i18n.locale = user.locale
+		this.$i18n.locale = lang.locale
 	},
 	methods: {
 		changeLocale(locale) {
 			this.$i18n.locale = locale
-			localStorage.locale = user.locale = locale
+			localStorage.locale = lang.locale = locale
 		}
 	}
 }
