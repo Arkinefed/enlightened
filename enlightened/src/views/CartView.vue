@@ -6,7 +6,8 @@
 			<template v-if="samplePacks.length == Object.keys(cart).length">
 				<div class="cart-container">
 					<div class="cart-info-container">
-						<cart-item />
+						<cart-item v-for="item in samplePacks" v-bind:key="item.id" :id="item.id" :name="item.name"
+							:count="cart[item.id]" :price="item.price" />
 					</div>
 					<div class="order-container">
 						<div class="order-headline">
@@ -97,13 +98,11 @@ export default {
 }
 
 .cart-info-container {
-	background-color: black;
+	background-color: white;
 	color: white;
 	width: 75%;
 	display: flex;
-	padding: 27px;
 	flex-direction: column;
-	row-gap: 27px;
 }
 
 .order-container {
