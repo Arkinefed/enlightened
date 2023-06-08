@@ -77,7 +77,6 @@ export default {
 .img-container {
 	background-color: black;
 	color: white;
-	height: 50px;
 	width: 25%;
 }
 

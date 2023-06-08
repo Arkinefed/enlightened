@@ -98,11 +98,13 @@ export default {
 }
 
 .cart-info-container {
-	background-color: white;
+	background-color: black;
 	color: white;
 	width: 75%;
 	display: flex;
+	padding: 27px;
 	flex-direction: column;
+	row-gap: 27px;
 }
 
 .order-container {

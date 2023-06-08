@@ -27,12 +27,10 @@ export default {
 <style>
 .item-container {
 	padding: 27px;
-	border: 27px solid black;
 	font-size: 27px;
 	box-sizing: border-box;
 	color: black;
 	background-color: white;
-	margin-bottom: -27px;
 }
 
 .item-container a {
