@@ -4,11 +4,13 @@
 			<router-link :to="'/sample-pack/' + id">
 				<div class="item-container-inner">
 					<div class="w-60">{{ name }}</div>
-					<div class="w-10">{{ count }}</div>
-					<div class="w-10 a-r">{{ price }} zł</div>
-					<div class="w-20"></div>
+					<div class="w-20">{{ count }}</div>
+					<div class="w-20 a-r">{{ price }} zł</div>
 				</div>
 			</router-link>
+		</div>
+		<div class="remove cent pointer hover" @click.prevent="remove(id)">
+			remove
 		</div>
 	</div>
 </template>
@@ -20,7 +22,12 @@ export default {
 		'name',
 		'count',
 		'price'
-	]
+	],
+	methods: {
+		remove(id) {
+			this.$emit('remove', id)
+		}
+	}
 }
 </script>
 
@@ -40,5 +47,28 @@ export default {
 
 .item-container-inner {
 	display: flex;
+}
+
+.remove {
+	background-color: white;
+	color: black;
+	padding: 7px;
+	margin-top: 17px;
+}
+
+.pointer {
+	cursor: pointer;
+	user-select: none;
+}
+
+.hover {
+	border: 1px solid black;
+}
+
+.hover:hover {
+	color: white;
+	background-color: black;
+	border: 1px solid white;
+	box-sizing: border-box;
 }
 </style>

@@ -7,7 +7,7 @@
 				<div class="cart-container">
 					<div class="cart-info-container">
 						<cart-item v-for="item in samplePacks" v-bind:key="item.id" :id="item.id" :name="item.name"
-							:count="cart[item.id]" :price="item.price" />
+							:count="cart[item.id]" :price="item.price" @remove="removeItem" />
 					</div>
 					<div class="order-container">
 						<div class="order-headline">
@@ -53,21 +53,28 @@ export default {
 		}
 	},
 	mounted() {
-		for (const i of cart.items) {
-			if (!this.cart[i]) {
-				this.cart[i] = 1
-			} else {
-				this.cart[i]++
-			}
-		}
-
-		if (Object.keys(cart).length) {
-			for (const i in this.cart) {
-				this.getSamplePack(i)
-			}
-		}
+		this.initCart()
 	},
 	methods: {
+		initCart() {
+			this.cart = {}
+			this.samplePacks = []
+			this.price = 0
+
+			for (const i of cart.items) {
+				if (!this.cart[i]) {
+					this.cart[i] = 1
+				} else {
+					this.cart[i]++
+				}
+			}
+
+			if (Object.keys(cart).length) {
+				for (const i in this.cart) {
+					this.getSamplePack(i)
+				}
+			}
+		},
 		getSamplePack(id) {
 			axios.get('http://localhost:8080/resource/sample-pack/id/' + id)
 				.then(response => {
@@ -79,6 +86,15 @@ export default {
 				.catch(error => {
 					this.message = error.message
 				})
+		},
+		removeItem(id) {
+			const items = cart.items.filter(i => i !== Number(id))
+
+			localStorage.cart = JSON.stringify(items)
+
+			cart.items = items
+
+			this.initCart()
 		},
 		placeOrder() {
 
