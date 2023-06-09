@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { cart } from '@/reactive/cart'
 import { user } from '@/reactive/user'
 
 export default {
@@ -16,6 +17,8 @@ export default {
 		user.username = ''
 		user.role = ''
 		user.exp = ''
+
+		cart.items = []
 	}
 }
 </script>

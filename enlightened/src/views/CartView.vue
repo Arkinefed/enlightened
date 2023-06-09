@@ -24,6 +24,9 @@
 						<div class="order-part cent pointer hover" @click.prevent="placeOrder()">
 							place order
 						</div>
+						<div v-if="orderResponse" class="order-message">
+							{{ orderMessage }}
+						</div>
 					</div>
 				</div>
 			</template>
@@ -38,6 +41,7 @@ import axios from 'axios'
 
 import CartItem from '@/components/cart/CartItem.vue'
 import { cart } from '@/reactive/cart'
+import { user } from '@/reactive/user'
 
 export default {
 	components: {
@@ -47,6 +51,8 @@ export default {
 		return {
 			cart: {},
 			price: 0,
+			orderResponse: false,
+			orderMessage: ',',
 			dataReceived: false,
 			message: 'loading data',
 			samplePacks: []
@@ -97,7 +103,27 @@ export default {
 			this.initCart()
 		},
 		placeOrder() {
+			axios.post('http://localhost:8080/resource/order/place',
+				{ ids: cart.items },
+				{
+					headers: {
+						Authorization: 'Bearer ' + user.token
+					}
+				})
+				.then(response => {
+					cart.items = []
 
+					this.$router.push('/order-complete')
+				})
+				.catch(error => {
+					this.orderResponse = true
+
+					if (error.response) {
+						this.orderMessage = error.response.data
+					} else {
+						this.orderMessage = error.message
+					}
+				})
 		}
 	}
 }
@@ -163,5 +189,9 @@ export default {
 	background-color: white;
 	border: 1px solid white;
 	box-sizing: border-box;
+}
+
+.order-message {
+	color: red;
 }
 </style>

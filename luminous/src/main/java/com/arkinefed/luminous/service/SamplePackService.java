@@ -27,6 +27,10 @@ public class SamplePackService {
         return samplePackRepository.getSamplePack(id);
     }
 
+    public SamplePack findById(long id) {
+        return samplePackRepository.findById(id).get();
+    }
+
     public boolean existsById(long id) {
         return samplePackRepository.existsById(id);
     }

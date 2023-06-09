@@ -8,6 +8,7 @@ import LoginView from '../views/LoginView.vue'
 import LogoutView from '../views/LogoutView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import CartView from '../views/CartView.vue'
+import OrderCompleteView from '../views/OrderCompleteView.vue'
 
 const routes = [
 	{
@@ -49,6 +50,11 @@ const routes = [
 		path: '/cart',
 		name: 'cart',
 		component: CartView
+	},
+	{
+		path: '/order-complete',
+		name: 'order-complete',
+		component: OrderCompleteView
 	}
 ]
 

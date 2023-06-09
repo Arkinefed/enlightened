@@ -1,19 +1,16 @@
 package com.arkinefed.luminous.data.order;
 
-import java.util.List;
-
 public class OrderRequest {
-    private List<Long> ids;
+    private long[] ids;
 
-    public OrderRequest(List<Long> ids) {
-        this.ids = ids;
+    public OrderRequest() {
     }
 
-    public List<Long> getIds() {
+    public long[] getIds() {
         return ids;
     }
 
-    public void setIds(List<Long> ids) {
+    public void setIds(long[] ids) {
         this.ids = ids;
     }
 }
