@@ -7,7 +7,7 @@
 				<div class="cart-container">
 					<div class="cart-info-container">
 						<cart-item v-for="item in samplePacks" v-bind:key="item.id" :id="item.id" :name="item.name"
-							:count="cart[item.id]" :price="item.price" @remove="removeItem" />
+							:price="item.price" @remove="removeItem" />
 					</div>
 					<div class="order-container">
 						<div class="order-headline">

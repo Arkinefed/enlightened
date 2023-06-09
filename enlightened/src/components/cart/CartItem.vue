@@ -3,8 +3,7 @@
 		<div class="item-container">
 			<router-link :to="'/sample-pack/' + id">
 				<div class="item-container-inner">
-					<div class="w-60">{{ name }}</div>
-					<div class="w-20">{{ count }}</div>
+					<div class="w-80">{{ name }}</div>
 					<div class="w-20 a-r">{{ price }} zł</div>
 				</div>
 			</router-link>
@@ -20,7 +19,6 @@ export default {
 	props: [
 		'id',
 		'name',
-		'count',
 		'price'
 	],
 	methods: {
@@ -47,6 +45,10 @@ export default {
 
 .item-container-inner {
 	display: flex;
+}
+
+.w-80 {
+	width: 80%;
 }
 
 .remove {

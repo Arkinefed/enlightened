@@ -57,8 +57,10 @@ export default {
 				})
 		},
 		addToCart() {
-			cart.items.push(this.samplePack.id)
-			localStorage.cart = JSON.stringify(cart.items)
+			if (!cart.items.includes(this.samplePack.id)) {
+				cart.items.push(this.samplePack.id)
+				localStorage.cart = JSON.stringify(cart.items)
+			}
 		}
 	}
 }
