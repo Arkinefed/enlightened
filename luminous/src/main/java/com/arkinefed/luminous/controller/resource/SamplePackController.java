@@ -2,7 +2,6 @@ package com.arkinefed.luminous.controller.resource;
 
 import com.arkinefed.luminous.service.SamplePackService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
