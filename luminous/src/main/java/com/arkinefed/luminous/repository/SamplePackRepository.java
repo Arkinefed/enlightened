@@ -16,5 +16,8 @@ public interface SamplePackRepository extends JpaRepository<SamplePack, Long> {
     @Query("select new com.arkinefed.luminous.data.SamplePackInformation(sp.id, sp.name, sp.price, sp.genre.name, sp.description, sp.releaseDate) from SamplePack sp where sp.id = :id")
     SamplePackInformation getSamplePack(long id);
 
+    @Query("select new com.arkinefed.luminous.data.SamplePackInformation(sp.id, sp.name, sp.price, sp.genre.name, sp.description, sp.releaseDate) from SamplePack sp where lower(sp.name) like lower(concat('%', :search, '%')) or lower(sp.description) like lower(concat('%', :search, '%'))")
+    List<SamplePackInformation> getAllSamplePacksWithNameOrDescriptionLike(String search);
+
     boolean existsById(long id);
 }

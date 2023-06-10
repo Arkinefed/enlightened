@@ -28,4 +28,9 @@ public class SamplePackController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/find/{part}")
+    public ResponseEntity<?> find(@PathVariable String part) {
+        return ResponseEntity.ok(samplePackService.findSamplePacks(part));
+    }
 }

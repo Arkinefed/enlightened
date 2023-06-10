@@ -27,6 +27,10 @@ public class SamplePackService {
         return samplePackRepository.getSamplePack(id);
     }
 
+    public List<SamplePackInformation> findSamplePacks(String part) {
+        return samplePackRepository.getAllSamplePacksWithNameOrDescriptionLike(part);
+    }
+
     public SamplePack findById(long id) {
         return samplePackRepository.findById(id).get();
     }
