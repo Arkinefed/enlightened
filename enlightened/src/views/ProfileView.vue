@@ -1,13 +1,85 @@
 <template>
-    <div class="profile">
+	<div class="profile">
+		<template v-if="dataReceived">
+			<h1>{{ profileInfo.username }}</h1>
 
-    </div>
+			<div class="profile-container">
+				<div class="img-container">
+
+				</div>
+				<div class="info-container">
+					<div class="info-part">
+						{{ profileInfo.firstName }}
+					</div>
+					<div class="info-part">
+						{{ profileInfo.lastName }}
+					</div>
+					<div class="info-part">
+						{{ profileInfo.registerDate.split('T')[0] }}
+					</div>
+					<div class="info-part cent pointer hover" @click.prevent="">
+						zamówienia [{{ profileInfo.orderCount }}]
+					</div>
+					<div v-if="profileInfo.role == 'admin'" class="info-part cent pointer hover" @click.prevent="">
+						panel administratora
+					</div>
+				</div>
+			</div>
+		</template>
+		<h2 v-else>{{ message }}</h2>
+	</div>
 </template>
 
 <script>
-export default {
+import { user } from '@/reactive/user'
+import axios from 'axios'
 
+export default {
+	data() {
+		return {
+			dataReceived: false,
+			message: 'loading data',
+			profileInfo: null
+		}
+	},
+	mounted() {
+		if (!user.logged) {
+			this.$router.push('/')
+		}
+
+		this.getProfileInfo()
+	},
+	methods: {
+		getProfileInfo() {
+			axios.get('http://localhost:8080/resource/user/profile',
+				{
+					headers: {
+						Authorization: 'Bearer ' + user.token
+					}
+				})
+				.then(response => {
+					this.profileInfo = response.data
+					this.dataReceived = true
+				})
+				.catch(error => {
+					if (error.response) {
+						this.message = error.response.data
+					} else {
+						this.message = error.message
+					}
+				})
+		}
+	}
 }
 </script>
 
-<style></style>
+<style>
+.profile-container {
+	display: flex;
+	column-gap: 27px;
+	width: 100%;
+	padding: 0px 27px;
+	font-size: 27px;
+	box-sizing: border-box;
+}
+</style>
