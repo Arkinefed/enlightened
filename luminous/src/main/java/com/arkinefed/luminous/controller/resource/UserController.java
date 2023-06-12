@@ -1,7 +1,6 @@
 package com.arkinefed.luminous.controller.resource;
 
 import com.arkinefed.luminous.data.account.UserInformation;
-import com.arkinefed.luminous.data.order.OrderRequest;
 import com.arkinefed.luminous.model.User;
 import com.arkinefed.luminous.service.UserService;
 import com.arkinefed.luminous.utility.Authorization;
@@ -47,6 +46,32 @@ public class UserController {
                     user.getOrders().size());
 
             return ResponseEntity.ok(userInformation);
+        } catch (NoSuchAlgorithmException | InvalidKeyException | JsonProcessingException e) {
+            return ResponseEntity.status(500).body("internal error");
+        }
+    }
+
+    @GetMapping("/admin")
+    public ResponseEntity<?> admin(@RequestHeader(HttpHeaders.AUTHORIZATION) String bearer) {
+        String token = bearer.split("\\s+")[1];
+
+        try {
+            if (!Authorization.verifyToken(token)) {
+                return ResponseEntity.status(403).body("access denied");
+            }
+
+            if (Authorization.tokenExpired(token)) {
+                return ResponseEntity.status(401).body("token expired");
+            }
+
+            String username = Authorization.getValueFromTokenPayload("username", token);
+            User user = userService.findByUsername(username);
+
+            if (user.getRole() == User.Role.admin) {
+                return ResponseEntity.ok(true);
+            }
+
+            return ResponseEntity.status(403).body("access denied");
         } catch (NoSuchAlgorithmException | InvalidKeyException | JsonProcessingException e) {
             return ResponseEntity.status(500).body("internal error");
         }

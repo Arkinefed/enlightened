@@ -17,12 +17,16 @@
 					<div class="info-part">
 						{{ profileInfo.registerDate.split('T')[0] }}
 					</div>
-					<div class="info-part cent pointer hover" @click.prevent="">
-						zamówienia [{{ profileInfo.orderCount }}]
-					</div>
-					<div v-if="profileInfo.role == 'admin'" class="info-part cent pointer hover" @click.prevent="">
-						panel administratora
-					</div>
+					<router-link to="/orders">
+						<div class="info-part cent pointer hover">
+							zamówienia [{{ profileInfo.orderCount }}]
+						</div>
+					</router-link>
+					<router-link to="/admin">
+						<div v-if="profileInfo.role == 'admin'" class="info-part cent pointer hover">
+							panel administratora
+						</div>
+					</router-link>
 				</div>
 			</div>
 		</template>
@@ -81,5 +85,9 @@ export default {
 	padding: 0px 27px;
 	font-size: 27px;
 	box-sizing: border-box;
+}
+
+.info-container a {
+	text-decoration: none;
 }
 </style>

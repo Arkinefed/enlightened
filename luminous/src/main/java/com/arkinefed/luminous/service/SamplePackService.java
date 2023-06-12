@@ -1,6 +1,6 @@
 package com.arkinefed.luminous.service;
 
-import com.arkinefed.luminous.data.SamplePackInformation;
+import com.arkinefed.luminous.data.sample_pack.SamplePackInformation;
 import com.arkinefed.luminous.model.SamplePack;
 import com.arkinefed.luminous.repository.SamplePackRepository;
 import org.springframework.stereotype.Service;
@@ -37,5 +37,9 @@ public class SamplePackService {
 
     public boolean existsById(long id) {
         return samplePackRepository.existsById(id);
+    }
+
+    public boolean existsByName(String name) {
+        return samplePackRepository.existsByName(name);
     }
 }

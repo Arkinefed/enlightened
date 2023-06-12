@@ -4,6 +4,7 @@ import com.arkinefed.luminous.model.Genre;
 import com.arkinefed.luminous.repository.GenreRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,5 +25,13 @@ public class GenreService {
 
     public void saveGenre(Genre genre) {
         genreRepository.save(genre);
+    }
+
+    public boolean existsByName(String name) {
+        return genreRepository.existsByName(name);
+    }
+
+    public List<String> getNames() {
+        return genreRepository.getNames();
     }
 }

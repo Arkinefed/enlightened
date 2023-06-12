@@ -1,18 +1,35 @@
 package com.arkinefed.luminous.controller.resource;
 
+import com.arkinefed.luminous.data.sample_pack.AddSamplePackRequest;
+import com.arkinefed.luminous.model.SamplePack;
+import com.arkinefed.luminous.model.User;
+import com.arkinefed.luminous.service.GenreService;
 import com.arkinefed.luminous.service.SamplePackService;
+import com.arkinefed.luminous.service.UserService;
+import com.arkinefed.luminous.utility.Authorization;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
 @RestController
 @RequestMapping("/resource/sample-pack")
 @CrossOrigin(origins = "http://localhost:8081")
 public class SamplePackController {
     private final SamplePackService samplePackService;
+    private final UserService userService;
+    private final GenreService genreService;
 
-    public SamplePackController(SamplePackService samplePackService) {
+    public SamplePackController(SamplePackService samplePackService,
+                                UserService userService,
+                                GenreService genreService) {
         this.samplePackService = samplePackService;
+        this.userService = userService;
+        this.genreService = genreService;
     }
 
     @GetMapping("/all")
@@ -32,5 +49,46 @@ public class SamplePackController {
     @GetMapping("/find/{part}")
     public ResponseEntity<?> find(@PathVariable String part) {
         return ResponseEntity.ok(samplePackService.findSamplePacks(part));
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<?> add(@RequestHeader(HttpHeaders.AUTHORIZATION) String bearer,
+                                 @RequestBody AddSamplePackRequest request) {
+        String token = bearer.split("\\s+")[1];
+
+        try {
+            if (!Authorization.verifyToken(token)) {
+                return ResponseEntity.status(403).body("access denied");
+            }
+
+            if (Authorization.tokenExpired(token)) {
+                return ResponseEntity.status(401).body("token expired");
+            }
+
+            String username = Authorization.getValueFromTokenPayload("username", token);
+
+            User user = userService.findByUsername(username);
+
+            if (user.getRole() != User.Role.admin) {
+                return ResponseEntity.status(403).body("access denied");
+            }
+
+            if (samplePackService.existsByName(request.getName())) {
+                return ResponseEntity.status(400).body("sample pack exists");
+            }
+
+            samplePackService.saveSamplePack(
+                    new SamplePack(
+                            request.getName(),
+                            request.getPrice(),
+                            genreService.findByName(request.getGenre()),
+                            request.getDescription(),
+                            request.getReleaseDate())
+            );
+
+            return ResponseEntity.ok("sample pack added");
+        } catch (NoSuchAlgorithmException | InvalidKeyException | JsonProcessingException e) {
+            return ResponseEntity.status(500).body("internal error");
+        }
     }
 }

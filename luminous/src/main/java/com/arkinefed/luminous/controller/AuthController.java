@@ -45,7 +45,7 @@ public class AuthController {
             String payload = "{" +
                     "\"username\" : \"" + user.getUsername() + "\"," +
                     "\"role\" : \"" + user.getRole() + "\"," +
-                    "\"exp\" : \"" + date.plusMinutes(5).atZone(zone).toEpochSecond() + "\"" +
+                    "\"exp\" : \"" + date.plusMinutes(40).atZone(zone).toEpochSecond() + "\"" +
                     "}";
 
             try {

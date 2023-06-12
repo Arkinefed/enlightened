@@ -9,6 +9,7 @@ import LogoutView from '../views/LogoutView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import CartView from '../views/CartView.vue'
 import OrderCompleteView from '../views/OrderCompleteView.vue'
+import AdminView from '../views/AdminView.vue'
 
 const routes = [
 	{
@@ -55,6 +56,11 @@ const routes = [
 		path: '/order-complete',
 		name: 'order-complete',
 		component: OrderCompleteView
+	},
+	{
+		path: '/admin',
+		name: 'admin',
+		component: AdminView
 	}
 ]
 

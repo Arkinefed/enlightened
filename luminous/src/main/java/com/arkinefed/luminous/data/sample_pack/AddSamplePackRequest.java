@@ -1,34 +1,15 @@
-package com.arkinefed.luminous.data;
+package com.arkinefed.luminous.data.sample_pack;
+
+import com.arkinefed.luminous.model.Genre;
 
 import java.time.LocalDateTime;
 
-public class SamplePackInformation {
-    private long id;
+public class AddSamplePackRequest {
     private String name;
     private double price;
-    private String genreName;
+    private String genre;
     private String description;
     private LocalDateTime releaseDate;
-
-    public SamplePackInformation() {
-    }
-
-    public SamplePackInformation(long id, String name, double price, String genreName, String description, LocalDateTime releaseDate) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.genreName = genreName;
-        this.description = description;
-        this.releaseDate = releaseDate;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -46,12 +27,12 @@ public class SamplePackInformation {
         this.price = price;
     }
 
-    public String getGenreName() {
-        return genreName;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setGenreInformation(String genreName) {
-        this.genreName = genreName;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public String getDescription() {
