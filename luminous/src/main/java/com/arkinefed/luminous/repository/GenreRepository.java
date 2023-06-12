@@ -1,5 +1,6 @@
 package com.arkinefed.luminous.repository;
 
+import com.arkinefed.luminous.data.genre.GenreInformation;
 import com.arkinefed.luminous.model.Genre;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,4 +18,7 @@ public interface GenreRepository extends JpaRepository<Genre, Long> {
 
     @Query("select g.name from Genre g")
     List<String> getNames();
+
+    @Query("select new com.arkinefed.luminous.data.genre.GenreInformation(g.id, g.name) from Genre g")
+    List<GenreInformation> getGenresInformation();
 }

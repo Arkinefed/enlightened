@@ -1,5 +1,6 @@
 package com.arkinefed.luminous.service;
 
+import com.arkinefed.luminous.data.genre.GenreInformation;
 import com.arkinefed.luminous.model.Genre;
 import com.arkinefed.luminous.repository.GenreRepository;
 import org.springframework.stereotype.Service;
@@ -27,11 +28,27 @@ public class GenreService {
         genreRepository.save(genre);
     }
 
+    public boolean existsById(long id) {
+        return genreRepository.existsById(id);
+    }
+
     public boolean existsByName(String name) {
         return genreRepository.existsByName(name);
     }
 
     public List<String> getNames() {
         return genreRepository.getNames();
+    }
+
+    public void deleteByName(String name) {
+        genreRepository.delete(genreRepository.findByName(name));
+    }
+
+    public void updateGenre(Genre genre) {
+        genreRepository.save(genre);
+    }
+
+    public List<GenreInformation> getGenresInformation() {
+        return genreRepository.getGenresInformation();
     }
 }

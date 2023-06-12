@@ -8,7 +8,9 @@
 
 		<label for="sp-genre">genre</label>
 		<select id="sp-price" v-model="samplePackData.genre">
-			<option v-for="genre in genres" v-bind:key="genre" id="sp-genre" :value="genre">{{ genre }}</option>
+			<option v-for="genre in genres" v-bind:key="genre.id" id="sp-genre" :value="genre.name">
+				{{ genre.name }}
+			</option>
 		</select>
 
 		<label for="sp-description">description</label>

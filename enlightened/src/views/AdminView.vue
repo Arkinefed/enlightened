@@ -8,6 +8,7 @@
 			<h1>genres</h1>
 
 			<add-genre-form />
+			<genre-table />
 		</template>
 		<h2 v-else>{{ message }}</h2>
 	</div>
@@ -19,11 +20,13 @@ import axios from 'axios'
 
 import AddGenreForm from '@/components/admin/AddGenreForm.vue'
 import AddSamplePackForm from '@/components/admin/AddSamplePackForm.vue'
+import GenreTable from '@/components/admin/GenreTable.vue'
 
 export default {
 	components: {
 		AddGenreForm,
-		AddSamplePackForm
+		AddSamplePackForm,
+		GenreTable
 	},
 	data() {
 		return {
