@@ -1,6 +1,9 @@
 package com.arkinefed.luminous.controller.resource;
 
+import com.arkinefed.luminous.data.genre.GenreInformation;
 import com.arkinefed.luminous.data.sample_pack.AddSamplePackRequest;
+import com.arkinefed.luminous.data.sample_pack.SamplePackInformation;
+import com.arkinefed.luminous.model.Genre;
 import com.arkinefed.luminous.model.SamplePack;
 import com.arkinefed.luminous.model.User;
 import com.arkinefed.luminous.service.GenreService;
@@ -87,6 +90,93 @@ public class SamplePackController {
             );
 
             return ResponseEntity.ok("sample pack added");
+        } catch (NoSuchAlgorithmException | InvalidKeyException | JsonProcessingException e) {
+            return ResponseEntity.status(500).body("internal error");
+        }
+    }
+
+    @PostMapping("/delete")
+    public ResponseEntity<?> delete(@RequestHeader(HttpHeaders.AUTHORIZATION) String bearer,
+                                    @RequestBody SamplePackInformation samplePackInformation) {
+        String token = bearer.split("\\s+")[1];
+
+        try {
+            if (!Authorization.verifyToken(token)) {
+                return ResponseEntity.status(403).body("access denied");
+            }
+
+            if (Authorization.tokenExpired(token)) {
+                return ResponseEntity.status(401).body("token expired");
+            }
+
+            String username = Authorization.getValueFromTokenPayload("username", token);
+
+            User user = userService.findByUsername(username);
+
+            if (user.getRole() != User.Role.admin) {
+                return ResponseEntity.status(403).body("access denied");
+            }
+
+            if (!samplePackService.existsByName(samplePackInformation.getName())) {
+                return ResponseEntity.status(400).body("sample pack doesn't exist");
+            }
+
+            samplePackService.delete(samplePackService.findById(samplePackInformation.getId()));
+
+            return ResponseEntity.ok("sample pack removed");
+        } catch (NoSuchAlgorithmException | InvalidKeyException | JsonProcessingException e) {
+            return ResponseEntity.status(500).body("internal error");
+        }
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<?> update(@RequestHeader(HttpHeaders.AUTHORIZATION) String bearer,
+                                    @RequestBody SamplePackInformation samplePackInformation) {
+        String token = bearer.split("\\s+")[1];
+
+        try {
+            if (!Authorization.verifyToken(token)) {
+                return ResponseEntity.status(403).body("access denied");
+            }
+
+            if (Authorization.tokenExpired(token)) {
+                return ResponseEntity.status(401).body("token expired");
+            }
+
+            String username = Authorization.getValueFromTokenPayload("username", token);
+
+            User user = userService.findByUsername(username);
+
+            if (user.getRole() != User.Role.admin) {
+                return ResponseEntity.status(403).body("access denied");
+            }
+
+            if (!samplePackService.existsById(samplePackInformation.getId())) {
+                return ResponseEntity.status(400).body("sample pack doesn't exist");
+            }
+
+            if (samplePackService.existsByName(samplePackInformation.getName())) {
+                return ResponseEntity.status(400).body("sample pack exists");
+            }
+
+            SamplePack sp = samplePackService.findById(samplePackInformation.getId());
+
+            sp.setName(samplePackInformation.getName());
+            sp.setPrice(samplePackInformation.getPrice());
+
+            Genre g = genreService.findByName(samplePackInformation.getGenreName());
+
+            if (g == null) {
+                g = new Genre(samplePackInformation.getGenreName());
+            }
+
+            sp.setGenre(g);
+            sp.setDescription(samplePackInformation.getDescription());
+            sp.setReleaseDate(samplePackInformation.getReleaseDate());
+
+            samplePackService.updateSamplePack(sp);
+
+            return ResponseEntity.ok("sample pack updated");
         } catch (NoSuchAlgorithmException | InvalidKeyException | JsonProcessingException e) {
             return ResponseEntity.status(500).body("internal error");
         }

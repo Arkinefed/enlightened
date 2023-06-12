@@ -4,6 +4,7 @@
 			<h1>sample packs</h1>
 
 			<add-sample-pack-form />
+			<sample-pack-table />
 
 			<h1>genres</h1>
 
@@ -21,12 +22,14 @@ import axios from 'axios'
 import AddGenreForm from '@/components/admin/AddGenreForm.vue'
 import AddSamplePackForm from '@/components/admin/AddSamplePackForm.vue'
 import GenreTable from '@/components/admin/GenreTable.vue'
+import SamplePackTable from '@/components/admin/SamplePackTable.vue'
 
 export default {
 	components: {
 		AddGenreForm,
 		AddSamplePackForm,
-		GenreTable
+		GenreTable,
+		SamplePackTable
 	},
 	data() {
 		return {

@@ -42,4 +42,12 @@ public class SamplePackService {
     public boolean existsByName(String name) {
         return samplePackRepository.existsByName(name);
     }
+
+    public void delete(SamplePack samplePack) {
+        samplePackRepository.delete(samplePack);
+    }
+
+    public void updateSamplePack(SamplePack samplePack) {
+        samplePackRepository.save(samplePack);
+    }
 }

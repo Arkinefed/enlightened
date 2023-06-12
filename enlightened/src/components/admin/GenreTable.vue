@@ -2,7 +2,7 @@
 	<div class="genre-table">
 		<table>
 			<tr>
-				<th>name</th>
+				<th>genres</th>
 			</tr>
 			<tr v-for="(genre, index) in genres" v-bind:key="genre.id">
 				<td class="search-box">
