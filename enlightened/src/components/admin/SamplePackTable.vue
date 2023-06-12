@@ -47,10 +47,10 @@ export default {
 		}
 	},
 	mounted() {
-		this.getGenres()
+		this.getSamplePacks()
 	},
 	methods: {
-		getGenres() {
+		getSamplePacks() {
 			axios.get('http://localhost:8080/resource/sample-pack/all')
 				.then(response => {
 					this.packs = response.data
@@ -70,7 +70,7 @@ export default {
 				.then(response => {
 					this.message = response.data
 
-					this.getGenres()
+					this.getSamplePacks()
 				})
 				.catch(error => {
 					this.message = error.message
@@ -87,7 +87,7 @@ export default {
 				.then(response => {
 					this.message = response.data
 
-					this.getGenres()
+					this.getSamplePacks()
 				})
 				.catch(error => {
 					this.message = error.message
