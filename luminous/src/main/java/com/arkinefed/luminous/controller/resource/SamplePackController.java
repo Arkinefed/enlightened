@@ -13,9 +13,11 @@ import com.arkinefed.luminous.utility.Authorization;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
@@ -54,9 +56,9 @@ public class SamplePackController {
         return ResponseEntity.ok(samplePackService.findSamplePacks(part));
     }
 
-    @PostMapping("/add")
+    @PostMapping(value = "/add", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<?> add(@RequestHeader(HttpHeaders.AUTHORIZATION) String bearer,
-                                 @RequestBody AddSamplePackRequest request) {
+                                 @ModelAttribute AddSamplePackRequest request) {
         String token = bearer.split("\\s+")[1];
 
         try {
@@ -80,18 +82,22 @@ public class SamplePackController {
                 return ResponseEntity.status(400).body("sample pack exists");
             }
 
-            samplePackService.saveSamplePack(
-                    new SamplePack(
-                            request.getName(),
-                            request.getPrice(),
-                            genreService.findByName(request.getGenre()),
-                            request.getDescription(),
-                            request.getReleaseDate())
-            );
+            SamplePack sp = new SamplePack(
+                    request.getName(),
+                    request.getPrice(),
+                    genreService.findByName(request.getGenre()),
+                    request.getDescription(),
+                    request.getReleaseDate());
+
+            sp.setImage(request.getImage().getBytes());
+
+            samplePackService.saveSamplePack(sp);
 
             return ResponseEntity.ok("sample pack added");
         } catch (NoSuchAlgorithmException | InvalidKeyException | JsonProcessingException e) {
             return ResponseEntity.status(500).body("internal error");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

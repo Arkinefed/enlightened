@@ -1,6 +1,7 @@
 package com.arkinefed.luminous.data.sample_pack;
 
 import com.arkinefed.luminous.model.Genre;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
@@ -9,6 +10,7 @@ public class AddSamplePackRequest {
     private double price;
     private String genre;
     private String description;
+    private MultipartFile image;
     private LocalDateTime releaseDate;
 
     public String getName() {
@@ -41,6 +43,14 @@ public class AddSamplePackRequest {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public MultipartFile getImage() {
+        return image;
+    }
+
+    public void setImage(MultipartFile image) {
+        this.image = image;
     }
 
     public LocalDateTime getReleaseDate() {

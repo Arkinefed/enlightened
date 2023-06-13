@@ -8,17 +8,19 @@ public class SamplePackInformation {
     private double price;
     private String genreName;
     private String description;
+    private byte[] image;
     private LocalDateTime releaseDate;
 
     public SamplePackInformation() {
     }
 
-    public SamplePackInformation(long id, String name, double price, String genreName, String description, LocalDateTime releaseDate) {
+    public SamplePackInformation(long id, String name, double price, String genreName, String description, byte[] image, LocalDateTime releaseDate) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.genreName = genreName;
         this.description = description;
+        this.image = image;
         this.releaseDate = releaseDate;
     }
 
@@ -60,6 +62,14 @@ public class SamplePackInformation {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     public LocalDateTime getReleaseDate() {

@@ -5,7 +5,7 @@
 
 			<div class="sample-pack-container">
 				<div class="img-container">
-
+					<img :src="image" alt="sample pack image">
 				</div>
 				<div class="info-container">
 					<div class="info-part">
@@ -39,7 +39,8 @@ export default {
 		return {
 			dataReceived: false,
 			message: 'loading data',
-			samplePack: null
+			samplePack: null,
+			image: ''
 		}
 	},
 	mounted() {
@@ -50,6 +51,7 @@ export default {
 			axios.get('http://localhost:8080/resource/sample-pack/id/' + id)
 				.then(response => {
 					this.samplePack = response.data
+					this.image = 'data:image/jpeg;base64,' + this.samplePack.image
 					this.dataReceived = true
 				})
 				.catch(error => {
@@ -80,6 +82,13 @@ export default {
 	background-color: black;
 	color: white;
 	width: 25%;
+	padding: 27px;
+}
+
+.img-container img {
+	max-width: 100%;
+	height: auto;
+	margin: 0px;
 }
 
 .info-container {

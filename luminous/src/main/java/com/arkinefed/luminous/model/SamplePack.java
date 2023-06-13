@@ -16,6 +16,7 @@ public class SamplePack {
     @ManyToOne
     private Genre genre;
     private String description;
+    private byte[] image;
     private LocalDateTime releaseDate;
     @ManyToMany(mappedBy = "boughtSamplePacks")
     private List<Order> orders;
@@ -76,6 +77,14 @@ public class SamplePack {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     public LocalDateTime getReleaseDate() {

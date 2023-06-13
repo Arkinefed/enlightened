@@ -16,6 +16,9 @@
 		<label for="sp-description">description</label>
 		<textarea rows="5" id="sp-description" v-model="samplePackData.description" />
 
+		<label for="sp-image">image</label>
+		<input type="file" id="sp-image" @change="fileSelected" />
+
 		<label for="sp-releaseDate">release date</label>
 		<input type="date" id="sp-releaseDate" v-model="releaseDate" />
 
@@ -37,6 +40,7 @@ export default {
 				price: 0.0,
 				genre: '',
 				description: '',
+				image: undefined,
 				releaseDate: ''
 			},
 			releaseDate: new Date().toISOString().slice(0, 10),
@@ -48,6 +52,9 @@ export default {
 		this.getGenres()
 	},
 	methods: {
+		fileSelected(event) {
+			this.samplePackData.image = event.target.files[0]
+		},
 		addSamplePack() {
 			this.samplePackData.releaseDate = this.releaseDate + 'T00:00:00'
 
@@ -56,11 +63,21 @@ export default {
 				this.samplePackData.description === '') {
 				this.message = 'invalid input'
 			} else {
+				const formData = new FormData()
+
+				formData.append('name', this.samplePackData.name)
+				formData.append('price', this.samplePackData.price)
+				formData.append('genre', this.samplePackData.genre)
+				formData.append('description', this.samplePackData.description)
+				formData.append('image', this.samplePackData.image)
+				formData.append('releaseDate', this.samplePackData.releaseDate)
+
 				axios.post('http://localhost:8080/resource/sample-pack/add',
-					this.samplePackData,
+					formData,
 					{
 						headers: {
-							Authorization: 'Bearer ' + user.token
+							Authorization: 'Bearer ' + user.token,
+							'Content-Type': 'multipart/form-data'
 						}
 					})
 					.then(response => {
