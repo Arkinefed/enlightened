@@ -112,6 +112,7 @@ export default {
 				})
 				.then(response => {
 					cart.items = []
+					localStorage.cart = JSON.stringify(cart.items)
 
 					this.$router.push('/order-complete')
 				})
