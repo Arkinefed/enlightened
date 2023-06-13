@@ -1,6 +1,6 @@
 <template>
 	<div class="cart">
-		<h1>cart</h1>
+		<h1>{{ $t('cart') }}</h1>
 
 		<template v-if="Object.keys(cart).length">
 			<template v-if="samplePacks.length == Object.keys(cart).length">
@@ -11,18 +11,18 @@
 					</div>
 					<div class="order-container">
 						<div class="order-headline">
-							your order
+							{{ $t('yourOrder') }}
 						</div>
 						<div class="flex-row">
 							<div>
-								price:
+								{{ $t('price') }}:
 							</div>
 							<div>
 								{{ price }} zł
 							</div>
 						</div>
 						<div class="order-part cent pointer hover" @click.prevent="placeOrder()">
-							place order
+							{{ $t('placeOrder') }}
 						</div>
 						<div v-if="orderResponse" class="order-message">
 							{{ orderMessage }}
@@ -32,7 +32,7 @@
 			</template>
 			<h2 v-else>{{ message }}</h2>
 		</template>
-		<h2 v-else>cart is empty</h2>
+		<h2 v-else>{{ $t('cartIsEmpty') }}</h2>
 	</div>
 </template>
 
@@ -54,7 +54,7 @@ export default {
 			orderResponse: false,
 			orderMessage: ',',
 			dataReceived: false,
-			message: 'loading data',
+			message: this.$t('loadingData'),
 			samplePacks: []
 		}
 	},

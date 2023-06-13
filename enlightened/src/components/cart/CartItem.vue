@@ -9,7 +9,7 @@
 			</router-link>
 		</div>
 		<div class="remove cent pointer hover" @click.prevent="remove(id)">
-			remove
+			{{ $t('remove') }}
 		</div>
 	</div>
 </template>

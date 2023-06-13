@@ -2,17 +2,17 @@
 	<div class="genre-table">
 		<table>
 			<tr>
-				<th>genres</th>
+				<th>{{ $t('genres') }}</th>
 			</tr>
 			<tr v-for="(genre, index) in genres" v-bind:key="genre.id">
 				<td class="search-box">
 					<input type="text" v-model="genres[index].name">
 				</td>
 				<td class="clickable" @click.prevent="removeGenre(genres[index].name)">
-					remove
+					{{ $t('remove') }}
 				</td>
 				<td class="clickable" @click.prevent="updateGenre(genres[index].id, genres[index].name)">
-					update
+					{{ $t('update') }}
 				</td>
 			</tr>
 		</table>
@@ -29,7 +29,7 @@ export default {
 	data() {
 		return {
 			message: '',
-			genres: ['loading data']
+			genres: [this.$t('loadingData')]
 		}
 	},
 	mounted() {
@@ -47,7 +47,7 @@ export default {
 		},
 		removeGenre(name) {
 			if (name === '') {
-				this.message = 'invalid input'
+				this.message = this.$t('invalidInput')
 			} else {
 				axios.post('http://localhost:8080/resource/genre/delete',
 					{ name },
@@ -68,7 +68,7 @@ export default {
 		},
 		updateGenre(id, name) {
 			if (name === '') {
-				this.message = 'invalid input'
+				this.message = this.$t('invalidInput')
 			} else {
 				axios.post('http://localhost:8080/resource/genre/update',
 					{ id, name },

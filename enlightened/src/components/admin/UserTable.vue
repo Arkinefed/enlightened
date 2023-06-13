@@ -3,7 +3,7 @@
 		<table>
 			<tr>
 				<th>
-					users
+					{{ $t('users') }}
 				</th>
 			</tr>
 			<tr v-for="(user, index) in users" v-bind:key="user.id">
@@ -26,10 +26,10 @@
 					<input type="text" v-model="users[index].registerDate">
 				</td>
 				<td class="clickable" @click.prevent="removeUser(index)">
-					remove
+					{{ $t('remove') }}
 				</td>
 				<td class="clickable" @click.prevent="updateUser(index)">
-					update
+					{{ $t('remove') }}
 				</td>
 			</tr>
 		</table>
@@ -46,7 +46,7 @@ export default {
 	data() {
 		return {
 			message: '',
-			users: ['loading data']
+			users: [this.$t('loadingData')]
 		}
 	},
 	mounted() {

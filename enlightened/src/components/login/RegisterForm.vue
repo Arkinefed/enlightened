@@ -42,7 +42,7 @@ export default {
 			this.formData.lastName = this.formData.lastName.replace(/\s/g, '')
 
 			if (this.formData.username === '' || this.formData.password === '' || this.formData.firstName === '' || this.formData.lastName === '') {
-				this.message = 'invalid input'
+				this.message = this.$t('invalidInput')
 			} else {
 				axios.post('http://localhost:8080/auth/register', this.formData)
 					.then(response => {
@@ -52,7 +52,7 @@ export default {
 						if (error.response) {
 							this.message = error.response.data.message
 						} else {
-							this.message = 'connection error'
+							this.message = this.$t('connectionError')
 						}
 					})
 			}

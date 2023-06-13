@@ -19,12 +19,12 @@
 					</div>
 					<router-link to="/orders">
 						<div class="info-part cent pointer hover">
-							zamówienia [{{ profileInfo.orderCount }}]
+							{{ $t('orders') }} [{{ profileInfo.orderCount }}]
 						</div>
 					</router-link>
 					<router-link to="/admin">
 						<div v-if="profileInfo.role == 'admin'" class="info-part cent pointer hover">
-							panel administratora
+							{{ $t('adminPanel') }}
 						</div>
 					</router-link>
 				</div>
@@ -42,7 +42,7 @@ export default {
 	data() {
 		return {
 			dataReceived: false,
-			message: 'loading data',
+			message: this.$t('loadingData'),
 			profileInfo: null
 		}
 	},

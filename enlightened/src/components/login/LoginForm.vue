@@ -30,11 +30,11 @@ export default {
 	methods: {
 		login() {
 			if (this.formData.name === '' || this.formData.password === '') {
-				this.message = 'invalid input'
+				this.message = this.$t('invalidInput')
 			} else {
 				axios.post('http://localhost:8080/auth/login', this.formData)
 					.then(response => {
-						this.message = 'logged in'
+						this.message = this.$t('loggedIn')
 
 						localStorage.logged = user.logged = true
 						localStorage.token = user.token = response.data.token
@@ -43,9 +43,9 @@ export default {
 					})
 					.catch(error => {
 						if (error.response) {
-							this.message = error.response.data.logged ? 'logged in' : 'couldn\'t log in'
+							this.message = error.response.data.logged ? this.$t('loggedIn') : this.$t('couldntLogIn')
 						} else {
-							this.message = 'connection error'
+							this.message = this.$t('connectionError')
 						}
 					})
 			}

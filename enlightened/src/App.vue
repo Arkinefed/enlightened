@@ -1,7 +1,7 @@
 <template>
 	<nav>
 		<router-link to="/">{{ $t('home') }}</router-link>
-		<router-link to="/sample-packs">sample packs</router-link>
+		<router-link to="/sample-packs">{{ $t('samplePacks') }}</router-link>
 		<router-link to="/about">{{ $t('about') }}</router-link>
 
 		<a v-bind:class="{ 'active-language': entry.language === this.$i18n.locale }" v-for="entry in languages"
@@ -10,7 +10,7 @@
 		</a>
 
 		<template v-if="user.logged">
-			<router-link to="/cart" class="first-left-link">cart [{{ cart.items.length }}]</router-link>
+			<router-link to="/cart" class="first-left-link">{{ $t('cart') }} [{{ cart.items.length }}]</router-link>
 			<router-link to="/profile">{{ user.username }}</router-link>
 			<router-link to="/logout">{{ $t('logout') }}</router-link>
 		</template>

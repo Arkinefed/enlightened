@@ -1,6 +1,6 @@
 <template>
 	<div class="logout">
-		<h2>wylogowano</h2>
+		<h2>{{ $t('loggedOut') }}</h2>
 	</div>
 </template>
 

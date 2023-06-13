@@ -1,17 +1,17 @@
 <template>
 	<div class="admin">
 		<template v-if="dataReceived">
-			<h1>sample packs</h1>
+			<h1>{{ $t('samplePacks') }}</h1>
 
 			<add-sample-pack-form />
 			<sample-pack-table />
 
-			<h1>genres</h1>
+			<h1>{{ $t('genres') }}</h1>
 
 			<add-genre-form />
 			<genre-table />
 
-			<h1>users</h1>
+			<h1>{{ $t('users') }}</h1>
 
 			<user-table />
 		</template>
@@ -40,7 +40,7 @@ export default {
 	data() {
 		return {
 			dataReceived: false,
-			message: 'loading data',
+			message: this.$t('loadingData'),
 			admin: false
 		}
 	},

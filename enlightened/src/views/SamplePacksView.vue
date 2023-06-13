@@ -1,13 +1,13 @@
 <template>
 	<div class="sample-packs">
-		<h1>sample packs</h1>
+		<h1>{{ $t('samplePacks') }}</h1>
 
 		<div class="search">
 			<div class="w-80 search-box">
 				<input type="text" placeholder="wyszukaj" v-model="part">
 			</div>
 			<div class="w-20 search-div pointer" @click.prevent="findSamplePacks()">
-				search
+				{{ $t('search') }}
 			</div>
 		</div>
 
@@ -16,13 +16,13 @@
 				<input type="number" min="1" :max="pageCount" placeholder="page" v-model="page">
 			</div>
 			<div class="w-5 of c">
-				of
+				{{ $t('of') }}
 			</div>
 			<div class="w-5 of c">
 				{{ pageCount }}
 			</div>
 			<div class="w-80 search-div pointer" @click.prevent="changePage()">
-				change page
+				{{ $t('changePage') }}
 			</div>
 		</div>
 
@@ -46,7 +46,7 @@ export default {
 	data() {
 		return {
 			dataReceived: false,
-			message: 'loading data',
+			message: this.$t('loadingData'),
 			samplePacks: [],
 			part: '',
 			displayed: [],
@@ -61,7 +61,7 @@ export default {
 	methods: {
 		getAllSamplePacks() {
 			this.dataReceived = false
-			this.message = 'loading data'
+			this.message = this.$t('loadingData')
 
 			axios.get('http://localhost:8080/resource/sample-pack/all')
 				.then(response => {
@@ -78,7 +78,7 @@ export default {
 		},
 		findSamplePacks() {
 			this.dataReceived = false
-			this.message = 'loading data'
+			this.message = this.$t('loadingData')
 
 			if (this.part === '') {
 				this.getAllSamplePacks()

@@ -1,28 +1,28 @@
 <template>
 	<form @submit.prevent="addSamplePack">
-		<label for="sp-name">sample pack name</label>
+		<label for="sp-name">{{ $t('samplePackName') }}</label>
 		<input type="text" id="sp-name" v-model="samplePackData.name">
 
-		<label for="sp-price">price</label>
+		<label for="sp-price">{{ $t('price') }}</label>
 		<input type="number" min="0" id="sp-price" v-model="samplePackData.price">
 
-		<label for="sp-genre">genre</label>
+		<label for="sp-genre">{{ $t('genre') }}</label>
 		<select id="sp-price" v-model="samplePackData.genre">
 			<option v-for="genre in genres" v-bind:key="genre.id" id="sp-genre" :value="genre.name">
 				{{ genre.name }}
 			</option>
 		</select>
 
-		<label for="sp-description">description</label>
+		<label for="sp-description">{{ $t('description') }}</label>
 		<textarea rows="5" id="sp-description" v-model="samplePackData.description" />
 
-		<label for="sp-image">image</label>
+		<label for="sp-image">{{ $t('image') }}</label>
 		<input type="file" id="sp-image" @change="fileSelected" />
 
-		<label for="sp-releaseDate">release date</label>
+		<label for="sp-releaseDate">{{ $t('releaseDate') }}</label>
 		<input type="date" id="sp-releaseDate" v-model="releaseDate" />
 
-		<button>add sample pack</button>
+		<button>{{ $t('addSamplePack') }}</button>
 	</form>
 
 	<p class="message">{{ message }}</p>
@@ -45,7 +45,7 @@ export default {
 			},
 			releaseDate: new Date().toISOString().slice(0, 10),
 			message: '',
-			genres: ['loading data']
+			genres: [this.$t('loadingData')]
 		}
 	},
 	mounted() {
@@ -61,7 +61,7 @@ export default {
 			if (this.samplePackData.name === '' ||
 				this.samplePackData.genre === '' ||
 				this.samplePackData.description === '') {
-				this.message = 'invalid input'
+				this.message = this.$t('invalidInput')
 			} else {
 				const formData = new FormData()
 

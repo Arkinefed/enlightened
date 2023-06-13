@@ -21,7 +21,7 @@
 						{{ samplePack.price }} zł
 					</div>
 					<div class="info-part cent pointer hover" @click.prevent="addToCart()">
-						add to cart
+						{{ $t('addToCart') }}
 					</div>
 				</div>
 			</div>
@@ -38,7 +38,7 @@ export default {
 	data() {
 		return {
 			dataReceived: false,
-			message: 'loading data',
+			message: this.$t('loadingData'),
 			samplePack: null,
 			image: ''
 		}

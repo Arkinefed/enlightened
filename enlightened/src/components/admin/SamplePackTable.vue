@@ -3,7 +3,7 @@
 		<table>
 			<tr>
 				<th>
-					sample packs
+					{{ $t('samplePacks') }}
 				</th>
 			</tr>
 			<tr v-for="(pack, index) in packs" v-bind:key="pack.id">
@@ -23,10 +23,10 @@
 					<input type="text" v-model="packs[index].releaseDate">
 				</td>
 				<td class="clickable" @click.prevent="removeSamplePack(index)">
-					remove
+					{{ $t('remove') }}
 				</td>
 				<td class="clickable" @click.prevent="updateSamplePack(index)">
-					update
+					{{ $t('update') }}
 				</td>
 			</tr>
 		</table>
@@ -43,7 +43,7 @@ export default {
 	data() {
 		return {
 			message: '',
-			packs: ['loading data']
+			packs: [this.$t('loadingData')]
 		}
 	},
 	mounted() {

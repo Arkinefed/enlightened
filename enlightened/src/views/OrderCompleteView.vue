@@ -1,6 +1,6 @@
 <template>
 	<div class="order-complete">
-		<h2>zamówienie zrealizowane</h2>
+		<h2>{{ $t('orderComplete') }}</h2>
 	</div>
 </template>
 
