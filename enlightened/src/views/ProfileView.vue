@@ -4,10 +4,10 @@
 			<h1>{{ profileInfo.username }}</h1>
 
 			<div class="profile-container">
-				<div class="img-container">
+				<div class="img-container dn">
 
 				</div>
-				<div class="info-container">
+				<div class="info-container w-100">
 					<div class="info-part">
 						{{ profileInfo.firstName }}
 					</div>
@@ -89,5 +89,13 @@ export default {
 
 .info-container a {
 	text-decoration: none;
+}
+
+.dn {
+	display: none;
+}
+
+.w-100 {
+	width: 100%;
 }
 </style>
