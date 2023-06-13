@@ -129,10 +129,6 @@ public class GenreController {
                 return ResponseEntity.status(400).body("genre doesn't exist");
             }
 
-            if (genreService.existsByName(genreInformation.getName())) {
-                return ResponseEntity.status(400).body("genre exists");
-            }
-
             Genre g = genreService.findById(genreInformation.getId());
 
             g.setName(genreInformation.getName());

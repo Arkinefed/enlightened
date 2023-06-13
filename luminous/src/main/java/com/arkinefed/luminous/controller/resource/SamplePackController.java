@@ -155,10 +155,6 @@ public class SamplePackController {
                 return ResponseEntity.status(400).body("sample pack doesn't exist");
             }
 
-            if (samplePackService.existsByName(samplePackInformation.getName())) {
-                return ResponseEntity.status(400).body("sample pack exists");
-            }
-
             SamplePack sp = samplePackService.findById(samplePackInformation.getId());
 
             sp.setName(samplePackInformation.getName());
