@@ -10,6 +10,10 @@
 
 			<add-genre-form />
 			<genre-table />
+
+			<h1>users</h1>
+
+			<user-table />
 		</template>
 		<h2 v-else>{{ message }}</h2>
 	</div>
@@ -23,13 +27,15 @@ import AddGenreForm from '@/components/admin/AddGenreForm.vue'
 import AddSamplePackForm from '@/components/admin/AddSamplePackForm.vue'
 import GenreTable from '@/components/admin/GenreTable.vue'
 import SamplePackTable from '@/components/admin/SamplePackTable.vue'
+import UserTable from '@/components/admin/UserTable.vue'
 
 export default {
 	components: {
 		AddGenreForm,
 		AddSamplePackForm,
 		GenreTable,
-		SamplePackTable
+		SamplePackTable,
+		UserTable
 	},
 	data() {
 		return {
