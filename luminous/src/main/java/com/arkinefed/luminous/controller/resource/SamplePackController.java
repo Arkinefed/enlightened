@@ -170,6 +170,8 @@ public class SamplePackController {
 
             if (g == null) {
                 g = new Genre(samplePackInformation.getGenreName());
+
+                genreService.saveGenre(g);
             }
 
             sp.setGenre(g);
