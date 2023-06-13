@@ -11,8 +11,23 @@
 			</div>
 		</div>
 
+		<div class="search">
+			<div class="w-10 search-box c">
+				<input type="number" min="1" :max="pageCount" placeholder="page" v-model="page">
+			</div>
+			<div class="w-5 of c">
+				of
+			</div>
+			<div class="w-5 of c">
+				{{ pageCount }}
+			</div>
+			<div class="w-80 search-div pointer" @click.prevent="changePage()">
+				change page
+			</div>
+		</div>
+
 		<template v-if="dataReceived">
-			<sample-pack-informations v-for="pack in samplePacks" v-bind:key="pack.id" :id="pack.id" :name="pack.name"
+			<sample-pack-informations v-for="(pack) in displayed" v-bind:key="pack.id" :id="pack.id" :name="pack.name"
 				:price="pack.price" :genreName="pack.genreName" :description="pack.description"
 				:releaseDate="pack.releaseDate" />
 		</template>
@@ -33,7 +48,11 @@ export default {
 			dataReceived: false,
 			message: 'loading data',
 			samplePacks: [],
-			part: ''
+			part: '',
+			displayed: [],
+			pageSize: 2,
+			page: 1,
+			pageCount: 0
 		}
 	},
 	mounted() {
@@ -48,6 +67,10 @@ export default {
 				.then(response => {
 					this.samplePacks = response.data
 					this.dataReceived = true
+
+					this.pageCount = Math.ceil(this.samplePacks.length / this.pageSize)
+
+					this.changePage()
 				})
 				.catch(error => {
 					this.message = error.message
@@ -68,6 +91,23 @@ export default {
 					.catch(error => {
 						this.message = error.message
 					})
+			}
+		},
+		changePage() {
+			if (this.page > this.pageCount) {
+				this.page = this.pageCount
+			}
+
+			if (this.page < 1) {
+				this.page = 1
+			}
+
+			this.displayed = []
+
+			for (let i = 0; i < this.samplePacks.length; i++) {
+				if ((this.page - 1) * this.pageSize + this.pageSize > i && (this.page - 2) * this.pageSize + this.pageSize <= i) {
+					this.displayed.push(this.samplePacks[i])
+				}
 			}
 		}
 	}
@@ -104,5 +144,15 @@ export default {
 	font-size: 27px;
 	padding: 17px;
 	border: 1px solid white;
+}
+
+.of {
+	color: white;
+	display: flex;
+	padding: 17px;
+}
+
+.c {
+	justify-content: center;
 }
 </style>
