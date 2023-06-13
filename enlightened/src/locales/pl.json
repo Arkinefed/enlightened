@@ -40,5 +40,7 @@
     "username": "nazwa użytkownika",
     "password": "hasło",
     "firstName": "imię",
-    "lastName": "nazwisko"
+    "lastName": "nazwisko",
+    "count": "ilość",
+    "orderDate": "data zamówienia"
 }

@@ -10,6 +10,7 @@ import ProfileView from '../views/ProfileView.vue'
 import CartView from '../views/CartView.vue'
 import OrderCompleteView from '../views/OrderCompleteView.vue'
 import AdminView from '../views/AdminView.vue'
+import OrdersView from '../views/OrdersView.vue'
 
 const routes = [
 	{
@@ -61,6 +62,11 @@ const routes = [
 		path: '/admin',
 		name: 'admin',
 		component: AdminView
+	},
+	{
+		path: '/orders',
+		name: 'orders',
+		component: OrdersView
 	}
 ]
 

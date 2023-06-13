@@ -1,5 +1,6 @@
 package com.arkinefed.luminous.controller.resource;
 
+import com.arkinefed.luminous.data.order.OrderData;
 import com.arkinefed.luminous.data.order.OrderRequest;
 import com.arkinefed.luminous.model.Order;
 import com.arkinefed.luminous.model.SamplePack;
@@ -61,6 +62,36 @@ public class OrderController {
             orderService.saveOrder(new Order(LocalDateTime.now(), user, samplePacks));
 
             return ResponseEntity.ok("order complete");
+        } catch (NoSuchAlgorithmException | InvalidKeyException | JsonProcessingException e) {
+            return ResponseEntity.status(500).body("internal error");
+        }
+    }
+
+    @GetMapping("/get")
+    public ResponseEntity<?> get(@RequestHeader(HttpHeaders.AUTHORIZATION) String bearer) {
+        String token = bearer.split("\\s+")[1];
+
+        try {
+            if (!Authorization.verifyToken(token)) {
+                return ResponseEntity.status(403).body("access denied");
+            }
+
+            if (Authorization.tokenExpired(token)) {
+                return ResponseEntity.status(401).body("token expired");
+            }
+
+            String username = Authorization.getValueFromTokenPayload("username", token);
+
+            User user = userService.findByUsername(username);
+            List<Order> orders = orderService.findOrdersByUserId(user.getId());
+
+            List<OrderData> orderData = new ArrayList<>();
+
+            for (Order o : orders) {
+                orderData.add(new OrderData(o.getBoughtSamplePacks(), o.getDate()));
+            }
+
+            return ResponseEntity.ok(orderData);
         } catch (NoSuchAlgorithmException | InvalidKeyException | JsonProcessingException e) {
             return ResponseEntity.status(500).body("internal error");
         }

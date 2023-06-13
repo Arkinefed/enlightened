@@ -40,5 +40,7 @@
     "username": "username",
     "password": "password",
     "firstName": "first name",
-    "lastName": "last name"
+    "lastName": "last name",
+    "count": "count",
+    "orderDate": "order date"
 }
