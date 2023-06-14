@@ -53,7 +53,7 @@ export default {
 				.then(response => {
 					this.samplePack = response.data
 
-					if (this.samplePack.iamge != null) {
+					if (this.samplePack.image != null) {
 						this.image = 'data:image/jpeg;base64,' + this.samplePack.image
 					} else {
 						this.image = this.defaultIcon
