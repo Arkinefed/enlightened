@@ -40,7 +40,8 @@ export default {
 			dataReceived: false,
 			message: this.$t('loadingData'),
 			samplePack: null,
-			image: ''
+			image: '',
+			defaultIcon: require('@/assets/img/default.png')
 		}
 	},
 	mounted() {
@@ -51,7 +52,13 @@ export default {
 			axios.get('http://localhost:8080/resource/sample-pack/id/' + id)
 				.then(response => {
 					this.samplePack = response.data
-					this.image = 'data:image/jpeg;base64,' + this.samplePack.image
+
+					if (this.samplePack.iamge != null) {
+						this.image = 'data:image/jpeg;base64,' + this.samplePack.image
+					} else {
+						this.image = this.defaultIcon
+					}
+
 					this.dataReceived = true
 				})
 				.catch(error => {
