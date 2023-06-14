@@ -29,7 +29,7 @@
 					{{ $t('remove') }}
 				</td>
 				<td class="clickable" @click.prevent="updateUser(index)">
-					{{ $t('remove') }}
+					{{ $t('update') }}
 				</td>
 			</tr>
 		</table>
